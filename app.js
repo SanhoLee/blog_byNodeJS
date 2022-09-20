@@ -21,15 +21,21 @@ app.use(express.urlencoded({extended:false}))
 
 
 app.get('/', (req,res) =>{
-  // res.send('Hello world!!! ')
-  res.render('index',{title: 'Hey', message: "Hello there!"})
+  res.render('index',{title: 'Hey', message: "Hello world !!"})
 
-  console.log(req.cookies)
 })
 
-app.post('/', (req,res)=>{
-  console.log('post result : --- ', req)
-  res.end()
+// error handling...
+app.use((err,req,res,next)=>{
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
+
+  console.log('err.status : ' , err.status);
 })
 
 
