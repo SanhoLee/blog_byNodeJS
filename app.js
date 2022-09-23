@@ -1,16 +1,17 @@
 var express = require('express');
-var app = express();
 var path = require('path');
 var cookieparser = require('cookie-parser');
-
 var http = require('http');
-var httpServer = http.createServer(app);
-
 var logger = require('morgan');
-const port = 4000;
+var dotenv = require('dotenv');
+
+var app = express();
+var httpServer = http.createServer(app);
+dotenv.config();
 
 // set view engine
 app.set('view engine', 'pug');
+app.set('views', path.join(__dirname, 'views'))
 
 // middlewares...
 app.use(logger('dev'));  // HTTP request logger.
@@ -41,10 +42,8 @@ app.use((err,req,res,next)=>{
   console.log('err.status : ' , err.status);
 })
 
-// app.listen(port, ()=>{
-//   console.log(`The app listening on port ${port}`);
-// })
+httpServer.listen(process.env.PORT);
 
-httpServer.listen(port);
-httpServer.on('error', callbackFunc1);~~need to correct
-httpServer.on('listening',callbackFunc2);~~need to correct
+// httpServer.on --> handling event which is fired..
+// httpServer.on('error', callbackFunc1);~~need to correct
+// httpServer.on('listening',callbackFunc2);~~need to correct
