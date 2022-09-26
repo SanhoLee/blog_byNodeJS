@@ -5,12 +5,26 @@ var http = require('http');
 var createError = require('http-errors');
 var logger = require('morgan');
 var dotenv = require('dotenv');
+dotenv.config();
+
 const globalRouter = require('./router/globalRouter');
 const routes = require('./routes');
 
+// auto reload modules..
+var livereload = require("livereload");
+var connectLiveReload = require("connect-livereload");
+const refreshTimeInterval = 100;
+const liveReloadServer = livereload.createServer();
+liveReloadServer.server.once("connection", ()=>{
+  setTimeout(()=>{
+    liveReloadServer.refresh(routes.home);
+  }, refreshTimeInterval);
+})
+
 var app = express();
+app.use(connectLiveReload());
+
 var httpServer = http.createServer(app);
-dotenv.config();
 
 // set view engine
 app.set('view engine', 'pug');
@@ -22,7 +36,7 @@ app.use(cookieparser());
 
 // built-in middlewares
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public'))); // 'public' 아래에 있는 static 파일에 접근할 수 있게 된다.
+app.use(express.static(path.join(__dirname, 'public'))); 
 app.use(express.urlencoded({extended:false}));
 
 
@@ -46,13 +60,13 @@ app.use((err,req,res,next)=>{
 })
 
 
-
-
-
+// todo,,, http 서버를 bin 폴더를 만들어 분리해야 할 필요가 있음...(2022.09.26)
 // httpServer.on --> handling event which is fired..
+// this is using for listening port number and error handling...
 httpServer.listen(process.env.PORT);
 httpServer.on('error', cbFunc_Server_error);
 httpServer.on('listening', cbFunc_Server_listen);
+
 
 function cbFunc_Server_listen(){
    console.log(`now, This is fired by httpServer listening event ,,,,, `);

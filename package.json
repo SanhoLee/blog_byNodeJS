@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node app.js"
+    "start": "node app",
+    "watch": "nodemon --ext *"
   },
   "dependencies": {
     "cookie-parser": "^1.4.6",
@@ -13,6 +14,9 @@
     "pug": "^3.0.2"
   },
   "devDependencies": {
-    "morgan": "^1.10.0"
+    "connect-livereload": "^0.6.1",
+    "livereload": "^0.9.3",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.20"
   }
 }
