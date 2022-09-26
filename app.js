@@ -5,6 +5,8 @@ var http = require('http');
 var createError = require('http-errors');
 var logger = require('morgan');
 var dotenv = require('dotenv');
+const globalRouter = require('./router/globalRouter');
+const routes = require('./routes');
 
 var app = express();
 var httpServer = http.createServer(app);
@@ -24,11 +26,7 @@ app.use(express.static(path.join(__dirname, 'public'))); // 'public' 아래에 �
 app.use(express.urlencoded({extended:false}));
 
 
-
-app.get('/', (req,res) =>{
-  res.render('index',{title: 'Hey', message: "Hello world !!"});
-})
-
+app.use(routes.home, globalRouter);
 
 
 // catch 404 and forward to error handler
@@ -51,10 +49,8 @@ app.use((err,req,res,next)=>{
 
 
 
-httpServer.listen(process.env.PORT);
-
 // httpServer.on --> handling event which is fired..
-// httpServer.on('error', callbackFunc1);
+httpServer.listen(process.env.PORT);
 httpServer.on('error', cbFunc_Server_error);
 httpServer.on('listening', cbFunc_Server_listen);
 
