@@ -1,7 +1,6 @@
 var express = require('express');
 var path = require('path');
 var cookieparser = require('cookie-parser');
-var http = require('http');
 var createError = require('http-errors');
 var logger = require('morgan');
 var dotenv = require('dotenv');
@@ -24,7 +23,6 @@ liveReloadServer.server.once("connection", ()=>{
 var app = express();
 app.use(connectLiveReload());
 
-var httpServer = http.createServer(app);
 
 // set view engine
 app.set('view engine', 'pug');
@@ -60,19 +58,5 @@ app.use((err,req,res,next)=>{
 })
 
 
-// todo,,, http 서버를 bin 폴더를 만들어 분리해야 할 필요가 있음...(2022.09.26)
-// httpServer.on --> handling event which is fired..
-// this is using for listening port number and error handling...
-httpServer.listen(process.env.PORT);
-httpServer.on('error', cbFunc_Server_error);
-httpServer.on('listening', cbFunc_Server_listen);
 
-
-function cbFunc_Server_listen(){
-   console.log(`now, This is fired by httpServer listening event ,,,,, `);
- }
-
- function cbFunc_Server_error(error){
-  console.log(`error code : ${error.code} `);
-
-}
+module.exports = app;
