@@ -6,8 +6,8 @@ globalRouter.get(routes.home, (req,res)=>{
     res.render('index',{title: 'Hey', message: "Hello sanho !!"});
 })
 
-globalRouter.get(routes.articleTemp, (req,res)=>{
-    res.render('index',{title: 'Hey', message: "This is articleTemp page... !!"});
+globalRouter.get(routes.articles, (req,res)=>{
+    res.render('articles',{title: 'Hey', message: "This is articleTemp page... !!"});
 })
 
 

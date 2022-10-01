@@ -3,7 +3,7 @@ const HOME = '/';
 
 
 // article routes...
-const ARTICLE_TEMP = '/articleTemp';
+const ARTICLES = '/articles';
 
 // admin routes...
 const ADMIN = '/admin';
@@ -14,7 +14,7 @@ const ADMIN = '/admin';
 // export this object...
 const routes = {
     home:HOME,
-    articleTemp:ARTICLE_TEMP,
+    articles:ARTICLES,
     admin:ADMIN
 
 }
