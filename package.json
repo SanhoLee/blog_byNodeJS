@@ -9,14 +9,20 @@
   },
   "dependencies": {
     "cookie-parser": "^1.4.6",
+    "del": "^7.0.0",
     "dotenv": "^16.0.2",
     "express": "~4.16.1",
     "gulp": "^4.0.2",
+    "gulp-cli": "^2.3.0",
+    "gulp-sass": "^5.1.0",
     "http-errors": "^2.0.0",
+    "node-sass": "^7.0.3",
     "pug": "^3.0.2"
   },
   "devDependencies": {
     "connect-livereload": "^0.6.1",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-clean-css": "^4.3.0",
     "livereload": "^0.9.3",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.20",
