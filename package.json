@@ -4,12 +4,14 @@
   "private": true,
   "scripts": {
     "start": "node bin/www.js",
-    "watch": "nodemon --ext *"
+    "watch": "nodemon --ext *",
+    "build:styles": "gulp"
   },
   "dependencies": {
     "cookie-parser": "^1.4.6",
     "dotenv": "^16.0.2",
     "express": "~4.16.1",
+    "gulp": "^4.0.2",
     "http-errors": "^2.0.0",
     "pug": "^3.0.2"
   },
@@ -17,6 +19,7 @@
     "connect-livereload": "^0.6.1",
     "livereload": "^0.9.3",
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.20",
+    "sass": "^1.55.0"
   }
 }
