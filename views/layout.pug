@@ -3,5 +3,21 @@ html
         title= title 
         link(rel="stylesheet", href="/stylesheets/style.css") 
     body 
-        block content
+        #h  
+            ul 
+                a(href=routes.home)
+                    li Home 
+                a(href=routes.about)
+                    li About  
+                a(href=routes.articles)
+                    li Articles  
+                a(href=routes.comments)
+                    li Comments 
+        #h_sub header_sub (Nothing now...)
+        #n (navi area.)
+        #s 
+            block content
+        #a (aside area.)
+        #f Footer
+
 
