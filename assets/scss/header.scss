@@ -1,0 +1,25 @@
+#h {
+	background: beige;
+	height: 80px;
+	display: flex;
+	align-items:center;
+
+	a {
+		text-decoration: none;
+		padding-right: 10px;
+	}
+}
+
+#h_sub {
+	.hsub_img {
+		height: 200px;
+		width: 100%;
+		display: flex;
+		justify-content: center;	// horizontal align
+		align-items: center;	// vertical align
+		img {
+			max-width: 100%;
+			height: 100%;
+		}
+	}
+}

@@ -6,7 +6,7 @@
     "dev:server": "nodemon --exec babel-node bin/www.js --delay 1",
     "build:assets": "gulp",
     "build:server": "babel ./bin/www.js --out-dir build",
-    "start": "node bin/www.js"
+    "start": "node build/www.js"
   },
   "dependencies": {
     "cookie-parser": "^1.4.6",
